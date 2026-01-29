@@ -4,14 +4,16 @@ from openai import OpenAI
 
 app = FastAPI()
 
-client = OpenAI(api_key="YOUR_API_KEY_HERE")  # Put your OpenAI key
+client = OpenAI(api_key="YOUR_API_KEY_HERE")  # replace with your key
 
-class Chat(BaseModel):
-    message: str
-
-@app.get("/")
+# For GET request
+@app.get("/")  # <-- no colon here
 def home():
     return {"message": "Backend working"}
+
+# POST request for chat
+class Chat(BaseModel):
+    message: str
 
 @app.post("/chat")
 def chat(data: Chat):
