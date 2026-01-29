@@ -1,3 +1,3 @@
 import streamlit as st
-st.tittle("AI chatbot")
+st.title("AI chatbot")
 st.write("frontend working")
