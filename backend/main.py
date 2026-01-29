@@ -2,21 +2,23 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import OpenAI
 
+# Create FastAPI app
 app = FastAPI()
 
+# Initialize OpenAI client
 client = OpenAI(api_key="YOUR_API_KEY_HERE")  # replace with your key
 
-# For GET request
-@app.get("/")  # <-- no colon here
-def home():
+# GET request to test backend
+@app.get("/")  # <-- NO colon here
+def home():  # colon goes here only
     return {"message": "Backend working"}
 
 # POST request for chat
 class Chat(BaseModel):
     message: str
 
-@app.post("/chat")
-def chat(data: Chat):
+@app.post("/chat")  # <-- NO colon here
+def chat(data: Chat):  # colon goes here only
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
